@@ -2,7 +2,7 @@
   "name": "simple-markov-chain",
   "version": "1.0.0",
   "description": "A JavaScript library to help you create Markov Chains",
-  "main": "dist/markov.js",
+  "main": "dist/markov.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
