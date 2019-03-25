@@ -16,5 +16,12 @@
     "chain"
   ],
   "author": "Edwin Pratt",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "babel-loader": "^8.0.5",
+    "eslint": "^5.15.3",
+    "webpack": "^4.29.6"
+  }
 }
