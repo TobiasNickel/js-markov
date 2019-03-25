@@ -2,5 +2,6 @@
   "editor.detectIndentation": false,
   "editor.tabSize": 2,
   "licenser.author": "Edwin Pratt",
-  "licenser.license": "MIT"
+  "licenser.license": "MIT",
+  "eslint.enable": true
 }
