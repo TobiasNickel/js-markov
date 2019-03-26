@@ -12,7 +12,7 @@ module.exports = {
     filename: 'markov.min.js'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
