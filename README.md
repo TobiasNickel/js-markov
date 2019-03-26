@@ -1,4 +1,5 @@
 # simple-markov-chain
+
 A JavaScript library to help you create Markov Chains
 
 ---
@@ -9,9 +10,9 @@ Markov Chains are very powerful, in fact, they are sometimes used in predicting 
 
 Some odd uses for Markov Chains are:
 
-* Hashing algoriths and cryptographic keys :key:
+* Hashing algorithms and cryptographic keys :key:
 
-* Some sites use Markov Chains to grade how likely a person will open the link
+* Some sites use Markov Chains to grade how likely a person will open the link (e.g., Google)
 
 * Baby name generators may use Markov Chains
 

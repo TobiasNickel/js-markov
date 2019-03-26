@@ -10,15 +10,13 @@ class Markov {
     // Currently, the valid types are:
     //
     // * text
-    // * numeric
     this.type = '';
 
     if (type === 'text') {
       this.type = type;
-    } else if (type === 'numeric') {
-      this.type = type;
     } else {
-      console.error(`${type} is not a valid type.`);
+      console.error(`${this.type} is not a valid type for the Markov Chain.`);
+      console.error('Valid types are:\ntext\nnumeric');
     }
 
     // This is an array that will hold all of our states
@@ -34,28 +32,33 @@ class Markov {
 
   addState(state) {
     if (this.type === 'text') {
-      
       if (typeof state === 'string') {
         this.states.push(state);
       } else {
         console.error(`${state} is not a string. Failed to add ${state} to the Markov Chain.`);
       }
-    
-    } else if (this.type === 'numeric') {
-      
-      if (typeof state === 'number') {
-        this.states.push(state);
-      } else {
-        console.error(`${state} is not a number. Failed to add ${state} to the Markov Chain.`);
-      }
-
     } else {
-
       console.error(`${this.type} is not a valid type for the Markov Chain.`);
-      console.error('Valid types are:\ntext\nnumeric');
-
+      console.error('Valid types are:\ntext\n');
     }
   }
 
-  // TODO: Write train function
+  train() {
+    if (this.type === 'text') {
+      for (let i = 0; i < this.states.length; i++) {
+        for (let j = 0; j <= this.states[i].length - this.order; j++) {
+          let gram = this.states[i].substring(j, j + this.order);
+
+          if (!this.possibilities[gram]) {
+            this.possibilities[gram] = [];
+          }
+
+          this.possibilities[gram].push(this.states[i].charAt(j + this.order));
+        }
+      }
+    } else {
+      console.error(`${this.type} is not a valid type for the Markov Chain.`);
+      console.error('Valid types are:\ntext');
+    }
+  }
 }
