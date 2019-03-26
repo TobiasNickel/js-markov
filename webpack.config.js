@@ -5,11 +5,13 @@
 
 const path = require('path');
 
-module.exports = {
+const serverConfig = {
   entry: './src/markov.js',
+  target: 'node',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'markov.min.js'
+    filename: 'markov.node.js',
+    library: 'markov'
   },
   module: {
     rules: [
@@ -26,3 +28,32 @@ module.exports = {
     ]
   }
 };
+
+const browserConfig = {
+  entry: './src/markov.js',
+  target: 'web',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'markov.js',
+    library: 'markov'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          presets: [
+            '@babel/preset-env'
+          ]
+        }
+      }
+    ]
+  }
+};
+
+module.exports = [
+  serverConfig,
+  browserConfig
+];
