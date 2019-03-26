@@ -45,6 +45,7 @@
     "spaced-comment": [
       "error",
       "always"
-    ]
+    ],
+    "no-console": "off"
   }
 }
