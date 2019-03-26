@@ -61,4 +61,40 @@ class Markov {
       console.error('Valid types are:\ntext');
     }
   }
+
+  generate(numberOfChars = 15) {
+    let current = this.random(this.possibilities);
+    let result = current;
+    let next = '';
+
+    for (let i = 0; i < numberOfChars; i++) {
+      let possibilities = this.possibilities[current];
+
+      if (!possibilities) {
+        break;
+      }
+
+      next = this.random(possibilities[current]);
+
+      result += next;
+
+      current = result.substring(result.length - this.order, result.length);
+    }
+
+    return result;
+  }
+
+  random(O) {
+    if (!Array.isArray(O) && typeof O === 'object') {
+      let keys = Object.keys(O);
+
+      let index = Math.floor(Math.random() * keys.length);
+
+      return O[keys[index]];
+    } else if (Array.isArray(O)) {
+      let index = Math.floor(Math.random() * O.length);
+
+      return O[index];
+    }
+  }
 }
