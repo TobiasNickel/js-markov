@@ -98,3 +98,5 @@ class Markov {
     }
   }
 }
+
+module.exports = Markov;
