@@ -26,75 +26,78 @@ class Markov {
     this.possibilities = {};
 
     // This variable holds the order
-    // This variable will only work for text
     this.order = 3;
+
+    // This array will keep track of all the possible ways to start a sentence
+    this.start = [];
   }
 
   addState(state) {
-    if (this.type === 'text') {
-      if (typeof state === 'string') {
-        this.states.push(state);
-      } else {
-        console.error(`${state} is not a string. Failed to add ${state} to the Markov Chain.`);
-      }
+    if (Array.isArray(state)) {
+      this.states = Array.from(state);
     } else {
-      console.error(`${this.type} is not a valid type for the Markov Chain.`);
-      console.error('Valid types are:\ntext\n');
+      this.states.push(state);
     }
+  }
+
+  clearState() {
+    this.states = [];
+    this.start = [];
+    this.possibilities = {};
   }
 
   train() {
-    if (this.type === 'text') {
-      for (let i = 0; i < this.states.length; i++) {
-        for (let j = 0; j <= this.states[i].length - this.order; j++) {
-          let gram = this.states[i].substring(j, j + this.order);
+    for (let i = 0; i < this.states.length; i++) {
+      this.start.push(this.states[i].substring(0, this.order));
 
-          if (!this.possibilities[gram]) {
-            this.possibilities[gram] = [];
-          }
+      for (let j = 0; j <= this.states[i].length - this.order; j++) {
+        let gram = this.states[i].substring(j, j + this.order);
 
-          this.possibilities[gram].push(this.states[i].charAt(j + this.order));
+        if (!this.possibilities[gram]) {
+          this.possibilities[gram] = [];
         }
+
+        this.possibilities[gram].push(this.states[i].charAt(j + this.order));
       }
-    } else {
-      console.error(`${this.type} is not a valid type for the Markov Chain.`);
-      console.error('Valid types are:\ntext');
     }
   }
 
-  generate(numberOfChars = 15) {
-    let current = this.random(this.possibilities);
-    let result = current;
+  generate(chars = 15) {
+    let startingState = this.random(this.start, 'array');
+    let result = startingState;
+    let current = startingState;
     let next = '';
 
-    for (let i = 0; i < numberOfChars; i++) {
-      let possibilities = this.possibilities[current];
+    if (typeof startingState === 'undefined') {
+      console.error('Error at Markov.generate(): variable startingState was set to undefined.\n\n\tPlease report this bug at github.com/Edwin-Pratt/simple-markov-chain/issues.');
+    }
 
-      if (!possibilities) {
+    for (let i = 0; i < chars - this.order; i++) {
+      next = this.random(this.possibilities[current], 'array');
+
+      if (!next) {
         break;
       }
-
-      next = this.random(possibilities[current]);
-
+      
       result += next;
-
-      current = result.substring(result.length - this.order, result.length);
+      current = result.substring(result.length - 3, result.length);
     }
 
     return result;
   }
 
-  random(O) {
-    if (!Array.isArray(O) && typeof O === 'object') {
-      let keys = Object.keys(O);
+  random(obj, type) {
+    if (Array.isArray(obj) && type === 'array') {
+      let index = Math.floor(Math.random() * obj.length);
 
+      return obj[index];
+    }
+
+    if (typeof obj === 'object' && type === 'object') {
+      let keys = Object.keys(obj);
       let index = Math.floor(Math.random() * keys.length);
 
-      return O[keys[index]];
-    } else if (Array.isArray(O)) {
-      let index = Math.floor(Math.random() * O.length);
-
-      return O[index];
+      return keys[index];
     }
   }
 }
