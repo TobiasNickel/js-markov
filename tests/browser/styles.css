@@ -1,0 +1,18 @@
+#wrapper {
+  width: 80%;
+  height: auto;
+
+  margin-right: auto;
+  margin-left: auto;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.center {
+  text-align: center
+}
+
+button {
+  background-color: blue;
+  color: white;
+}
