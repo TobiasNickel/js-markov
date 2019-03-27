@@ -46,6 +46,15 @@ class Markov {
     this.possibilities = {};
   }
 
+  setOrder(order = 3) {
+    if (typeof order !== 'number') {
+      console.error('Markov.setOrder: Order is not a number. Defaulting to 3.');
+      order = 3;
+    }
+
+    this.order = order;
+  }
+
   train() {
     for (let i = 0; i < this.states.length; i++) {
       this.start.push(this.states[i].substring(0, this.order));
