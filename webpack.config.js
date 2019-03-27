@@ -11,7 +11,7 @@ const serverConfig = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'markov.node.js',
-    library: 'markov',
+    library: 'Markov',
     libraryTarget: 'umd',
     globalObject: 'typeof self !== \'undefined\' ? self : this'
   },
@@ -37,7 +37,7 @@ const browserConfig = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'markov.js',
-    library: 'markov',
+    library: 'Markov',
     libraryTarget: 'umd',
     globalObject: 'typeof self !== \'undefined\' ? self : this'
   },
