@@ -1,5 +1,5 @@
 {
-  "name": "simple-markov-chain",
+  "name": "js-markov",
   "version": "1.0.0",
   "description": "A JavaScript library to help you create Markov Chains",
   "main": "dist/markov.node.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "github.com/Edwin-Pratt/simple-markov-chain"
+    "url": "github.com/Edwin-Pratt/js-markov"
   },
   "keywords": [
     "simple",

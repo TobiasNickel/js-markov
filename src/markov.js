@@ -69,7 +69,7 @@ class Markov {
     let next = '';
 
     if (typeof startingState === 'undefined') {
-      console.error('Error at Markov.generate(): variable startingState was set to undefined.\n\n\tPlease report this bug at github.com/Edwin-Pratt/simple-markov-chain/issues.');
+      console.error('Error at Markov.generate(): variable startingState was set to undefined.\n\n\tPlease report this bug at github.com/Edwin-Pratt/js-markov/issues.');
     }
 
     for (let i = 0; i < chars - this.order; i++) {

@@ -1,4 +1,4 @@
-# simple-markov-chain
+# js-markov
 
 A JavaScript library to help you create Markov Chains
 
