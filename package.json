@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "A JavaScript library to help you create Markov Chains",
   "main": "dist/markov.node.js",
-  "browser": {
-    "dist/markov.node.js": "dist/markov.js"
-  },
   "scripts": {
     "dev": "webpack --mode development",
     "prod": "webpack --mode production"
