@@ -146,7 +146,7 @@ markov.setOrder(4); // Set the order to 4.
 
 ## Contributing and bugs
 
-All of the information about how to contribute and report bugs can be found [here](./CONTRIBUTING.md).
+All of the information about how to contribute and report bugs can be found [here](https://github.com/Edwin-Pratt/js-markov/blob/master/CONTRIBUTING.md)
 
 ---
 
