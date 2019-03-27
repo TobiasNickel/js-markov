@@ -140,7 +140,7 @@ The lower the order is, the more random your possibilities will be.
 markov.setOrder(); // Set the order to 3.
 
 markov.setOrder(4); // Set the order to 4.
----
+```
 
 ## Contributing and bugs
 
