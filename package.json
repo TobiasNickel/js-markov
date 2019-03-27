@@ -1,12 +1,15 @@
 {
   "name": "js-markov",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A JavaScript library to help you create Markov Chains",
   "main": "dist/markov.node.js",
   "scripts": {
     "dev": "webpack --mode development",
     "prod": "webpack --mode production"
   },
+  "files": [
+    "dist/*"
+  ],
   "repository": {
     "type": "git",
     "url": "github.com/Edwin-Pratt/js-markov"
