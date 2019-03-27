@@ -11,4 +11,4 @@ markov.addState(words);
 
 markov.train();
 
-console.log(markov.generate(500));
+console.log(markov.generate(100));
