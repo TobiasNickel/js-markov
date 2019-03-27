@@ -142,6 +142,8 @@ markov.setOrder(); // Set the order to 3.
 markov.setOrder(4); // Set the order to 4.
 ```
 
+---
+
 ## Contributing and bugs
 
 All of the information about how to contribute and report bugs can be found [here](./CONTRIBUTING.md).
