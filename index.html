@@ -1,197 +1,202 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>JavaScript repo name generator</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-  
-  <body>
-    <header>
-      <div class="container">
-        <div class="row">
-          <div class="col-2">
-            <!-- Left empty for space -->
-          </div>
+  <title>JavaScript repo name generator</title>
 
-          <div class="col-8">
-            <h1 class="text-primary text-center">JavaScript repo name generator</h1>
-          </div>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
 
-          <div class="col-2">
-            <!-- Left empty for space -->
-          </div>
+<body>
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="col-2">
+          <!-- Left empty for space -->
+        </div>
+
+        <div class="col-8">
+          <h1 class="text-primary text-center">JavaScript repo name generator</h1>
+        </div>
+
+        <div class="col-2">
+          <!-- Left empty for space -->
         </div>
       </div>
-    </header>
+    </div>
+  </header>
+
+  <br>
+
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-2">
+          <!-- Left empty for space -->
+        </div>
+
+        <div class="col-8">
+          <p class="text-center">This site uses <a href="https://github.com/Edwin-Pratt/js-markov">js-markov</a> as the
+            base for the Markov Chain.</p>
+        </div>
+
+        <div class="col-2">
+          <!-- Left empty for space -->
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-2">
+          <!-- Left empty for space -->
+        </div>
+
+        <div class="col-8">
+          <p class="text-center">To generate a new name for your next repository, simply click the button below!</p>
+        </div>
+
+        <div class="col-2">
+          <!-- Left empty for space -->
+        </div>
+      </div>
+    </div>
 
     <br>
 
-    <section>
-      <div class="container">
-        <div class="row">
-          <div class="col-2">
-            <!-- Left empty for space -->
-          </div>
-        
-          <div class="col-8">
-            <p class="text-center">This site uses <a href="https://github.com/Edwin-Pratt/js-markov">js-markov</a> as the base for the Markov Chain.</p>
-          </div>
-        
-          <div class="col-2">
-            <!-- Left empty for space -->
-          </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-2">
+          <!-- Left empty for space -->
         </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-2">
-            <!-- Left empty for space -->
-          </div>
-        
-          <div class="col-8">
-            <p class="text-center">To generate a new name for your next repository, simply click the button below!</p>
-          </div>
-        
-          <div class="col-2">
-            <!-- Left empty for space -->
-          </div>
-        </div>
-      </div>
 
-      <br>
-
-      <div class="container">
-        <div class="row">
-          <div class="col-2">
-            <!-- Left empty for space -->
-          </div>
-
-          <div class="col-8">
-            <div class="text-center font-weight-bold">
-              <div id="output">
-                  <!-- Left empty for the output -->
-              </div>
-            </div>
-          </div>
-
-          <div class="col-2">
-            <!-- Left empty for space -->
-          </div>
-        </div>
-      </div>
-
-      <br>
-      <br>
-      
-      <div class="container">
-          <div class="row">
-            <div class="col-2">
-              <!-- Left empty for space -->
-            </div>
-  
-            <div class="col-8">
-              <div class="text-center">
-                  <button class="btn btn-primary" id="generate">Generate</button>
-              </div>
-            </div>
-  
-            <div class="col-2">
-              <!-- Left empty for space -->
+        <div class="col-8">
+          <div class="text-center font-weight-bold">
+            <div id="output">
+              <!-- Left empty for the output -->
             </div>
           </div>
         </div>
-      </div>
 
-      <br>
-      <br>
-
-      <br>
-
-      <div class="container">
-        <div class="row">
-          <div class="col-3">
-            <!-- Left empty for space -->
-          </div>
-
-           <div class="col-6">
-            <div class="container">
-              <div class="bg-success text-center text-white rounded">
-                <p>There are currently <span class="font-weight-bold" id="number-of-states"></span> states in the Markov Chain.</p>
-                <p>There may be names of actual repos. The reason for that is because there aren't enough states.</p>
-              </div>
-            </div>
-          </div>
-            
-          <div class="col-3">
-            <!-- Left empty for space -->
-          </div>
+        <div class="col-2">
+          <!-- Left empty for space -->
         </div>
       </div>
-    </section>
+    </div>
 
     <br>
     <br>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-2">
+          <!-- Left empty for space -->
+        </div>
+
+        <div class="col-8">
+          <div class="text-center">
+            <button class="btn btn-primary" id="generate">Generate</button>
+          </div>
+        </div>
+
+        <div class="col-2">
+          <!-- Left empty for space -->
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <br>
     <br>
 
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-2">
-            <!-- Left empty for spacing -->
-          </div>
+    <br>
 
-          <div class="col-3">
-            <div class="text-left">
-              <a href="https://github.com/Edwin-Pratt/js-markov">View on GitHub</a>
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+          <!-- Left empty for space -->
+        </div>
+
+        <div class="col-6">
+          <div class="container">
+            <div class="bg-success text-center text-white rounded">
+              <p>There are currently <span class="font-weight-bold" id="number-of-states"></span> states in the Markov
+                Chain.</p>
+              <p>There may be names of actual repos. The reason for that is because there aren't enough states.</p>
             </div>
-          </div>
-
-          <div class="col-2">
-            <hr width="50%">
-          </div>
-
-          <div class="col-3">
-            <div class="text-right">
-              <a href="https://npmjs.com/package/js-markov">View on NPM</a>
-            </div>
-          </div>
-
-          <div class="col-2">
-            <!-- Left empty for spacing -->
           </div>
         </div>
-      </div>
 
-      <br>
-      <br>
-
-      <div class="container">
-        <div class="row">
-          <div class="col-4">
-            <!-- Left empty for spacing -->
-          </div>
-
-          <div class="col-4">
-            <div class="text-center">
-              <a href="https://github.com/Edwin-Pratt">View my profile on GitHub</a>
-            </div>
-          </div>
-
-          <div class="col-4">
-            <!-- Left empty for spacing -->
-          </div>
+        <div class="col-3">
+          <!-- Left empty for space -->
         </div>
       </div>
-    </footer>
+    </div>
+  </section>
 
-    <script src="./dist/markov.js"></script>
-    <script src="./js/repo-list.js"></script>
-    <script src="js/main.js"></script>
-  </body>
+  <br>
+  <br>
+  <br>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-2">
+          <!-- Left empty for spacing -->
+        </div>
+
+        <div class="col-3">
+          <div class="text-left">
+            <a href="https://github.com/Edwin-Pratt/js-markov">View on GitHub</a>
+          </div>
+        </div>
+
+        <div class="col-2">
+          <hr width="50%">
+        </div>
+
+        <div class="col-3">
+          <div class="text-right">
+            <a href="https://npmjs.com/package/js-markov">View on NPM</a>
+          </div>
+        </div>
+
+        <div class="col-2">
+          <!-- Left empty for spacing -->
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+          <!-- Left empty for spacing -->
+        </div>
+
+        <div class="col-4">
+          <div class="text-center">
+            <a href="https://github.com/Edwin-Pratt">View my profile on GitHub</a>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <!-- Left empty for spacing -->
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./dist/markov.js"></script>
+  <script src="./js/repo-list.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
 </html>
