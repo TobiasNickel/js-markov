@@ -6,7 +6,10 @@
 var output = document.getElementById('output');
 var generateButton = document.getElementById('generate');
 var numStates = document.getElementById('number-of-states');
+<<<<<<< HEAD
 
+=======
+>>>>>>> Our new Markov Chain!
 // eslint-disable-next-line no-undef
 var markov = new Markov();
 
