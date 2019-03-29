@@ -6,11 +6,10 @@
 var output = document.getElementById('output');
 var generateButton = document.getElementById('generate');
 var numStates = document.getElementById('number-of-states');
-
 // eslint-disable-next-line no-undef
 var markov = new Markov();
 
-window.onload = function() {
+window.onload = function () {
   generateButton.style.visibility = 'hidden';
 
   // eslint-disable-next-line no-undef
@@ -22,7 +21,7 @@ window.onload = function() {
   generateButton.style.visibility = 'visible';
 };
 
-generateButton.addEventListener('click', function() {
+generateButton.addEventListener('click', function () {
   output.textContent = generateText();
 });
 
