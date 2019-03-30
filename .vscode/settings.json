@@ -3,5 +3,12 @@
   "editor.tabSize": 2,
   "licenser.author": "Edwin Pratt",
   "licenser.license": "MIT",
-  "eslint.enable": true
+  "eslint.enable": true,
+  "spellright.language": [
+    "en"
+  ],
+  "spellright.documentTypes": [
+    "latex",
+    "plaintext"
+  ]
 }
