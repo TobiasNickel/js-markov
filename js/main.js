@@ -15,7 +15,6 @@ window.onload = function () {
 
   // eslint-disable-next-line no-undef
   markov.addState(repoList);
-  markov.train();
 
   numStates.textContent = markov.getStates().length;
 
