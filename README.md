@@ -1,161 +1,254 @@
 # js-markov
 
-A JavaScript library to help you create Markov Chains
+[![Build Status](https://travis-ci.org/Edwin-Pratt/js-markov.svg?branch=master)](https://travis-ci.org/Edwin-Pratt/js-markov)
 
----
+[![NPM](https://nodei.co/npm/js-markov.png?downloads=true&downloadRank=true&stars=true)](https://npmjs.com/js-markov/)
 
-## :beginner: Introduction
+js-markov is a JavaScript library that allows you to create powerful Markov Chains.
 
-Markov Chains are very powerful, in fact, they are sometimes used in predicting the weather :cloud: or even generating sentences and words :pencil2:
+## Motivation behind js-markov
 
-Some odd uses for Markov Chains are:
+js-markov was designed to make using Markov Chains much easier, thus allowing you to create powerful text generation programs.
 
-* Hashing algorithms and cryptographic keys :key:
+## Live demo
 
-* Some sites use Markov Chains to grade how likely a person will open the link (e.g., Google)
+A live demo of js-markov can be seen on [JavaScript repo name generator](https://Edwin-Pratt.github.io/js-markov/).
 
-* Baby name generators may use Markov Chains
+## Code Example
 
-* [This JavaScript Repo Name generator](https://mrsharpoblunto.github.io/foswig.js/) uses a Markov Chain
+The following example shows the basic usage js-markov.
 
-Markov chains are a form of Machine Learning algorithm. And, because of that reason, we say that they *learn*. Markov chains use are list of probabilities to determine their output. Thus, they are biased about each state (i.e., how likely is the current state going to change to state B?)
+```javascript
+// Create a new Markov Chain
+var markov = new Markov();
 
----
+// Add some states
+markov.addState([
+  'Today is sunny',
+  'Today is rainy',
+  'The weather is sunny',
+  'The weather for tomorrow might be rainy'
+]);
 
-## :muscle: Getting started
+// Train the Markov Chain
+markov.train();
 
-There are 4 ways to import `js-markov` into your project.
+// Generate an output
+markov.generate();
+```
 
-- Add the `script` tag to your HTML file:
+## Installation
 
-  This is a fast way to import `js-markov`.
+There are two ways to get a copy of js-markov:
+
+- For developing your project in the browser, all you need to do is to include the CDN link:
 
   ```html
   <script src="https://unpkg.com/js-markov/dist/markov.js"></script>
   ```
 
-- Use NPM and import `js-markov` from `node_modules`.
+- For Node.js users, all you have to do is install it with NPM:
 
-  This is another option if you're developing a Node.js application, and you want to serve `js-markov`.
+  ```bash
+  npm install --save js-markov
+  ```
 
-  Just import `js-markov` from:
-
-  ```html
-  <script src="./node_modules/js-markov/dist/markov.js"></script>
-
-- Create a server and serve `js-markov`.
-
-  Maybe allow the application to make a `GET` request to `lib/js-markov` and respond with `node_modules/js-markov/dist/markov.js`
-
-- Import `js-markov` in one of your server-side files.
+  Then, you'll be able to include in your code:
 
   ```javascript
   const Markov = require('js-markov');
   ```
 
-If your are using NPM, you'll need to install it using:
+## Usage
 
-```bash
-npm install --save js-markov
-
-# Or:
-# npm i js-markov
-```
-
----
-
-## :rocket: Usage
-
-### Notes
-
-- In the browser, there is an object called `Markov` which gets imported when you include `markov.js` using the CDN:
-
-```html
-<script src="https://unpkg.com/js-markov/dist/markov.js"></script>
-```
-
-- If you're using `js-markov` on the server-side (i.e., Node.js), you'll need to import `js-markov` using:
-
-```javascript
-const Markov = require('js-markov');
-```
-
-### Creating a Markov Chain
-
-The first thing that we have to do is to create a `Markov` object. This can easily be done using:
+Before using js-markov, you'll need to create a new `Markov` object.
 
 ```javascript
 var markov = new Markov();
 ```
 
-After that, we need add our states (or, words). To do this, we use the `addState` function. `addState` can receive an array of states or a single state.
+After that, we can have some fun!
 
-```javascript
-markov.addState(['Today is cold', 'Today was cold', 'Today is hot', 'Today was hot']);
+The next part that we need to do is to add states. A state is a form of an object. In js-markov, a state is a word.
 
-markov.addState('Today it rained');
-```
+There are two ways to add states:
 
-Once we have done that, it is time to train our Markov Chain. The train function populates two properties of `Markov`, namely `possibilities` and `start`.
+- Use an array
+
+  ```javascript
+  markov.addState([
+    'Today is sunny',
+    'Today is rainy',
+    'The weather is sunny',
+    'The weather for tomorrow might be rainy'
+  ]);
+  ```
+
+- Add a single state
+
+  ```javascript
+  markov.addState('The weather for tomorrow might be sunny');
+  ```
+
+Awesome :sunglasses:
+
+Now we can train our Markov Chain. The method `train` receives an optional "order" parameter. This order defaults to 3.
+
+The order is only used for dividing the states into ngrams.
 
 ```javascript
 markov.train();
+
+// Or
+markov.train(3);
 ```
 
-Finally, the last thing to do: generate some text!
+It is time :smiley:
 
-To do this, `Markov` has a function called `generate`. This function receives an optional parameter indicating the number of characters that it must output. By default, this value is 15.
+Now we are ready to generate some text!
+
+All we have to do is to use the `generate` method. This method receives an option parameter which will be used to limit the length of the text. By default, it is set to 15.
 
 ```javascript
-markov.generate(); // Generate 15 characters
+var text = markov.generate();
 
-markov.generate(100); // Generate 100 characters
+// Or 
+var longText = markov.generate(50);
 ```
 
-### Advanced features
+## Advanced usage
 
-These features are more advanced features.
+These are some advanced methods that js-markov offers.
 
-- `Markov.clearState`
-  
-  This function will clear all of the properties of the Markov Chain.
-  
+### Cleaning things up
+
+- `clearChain()`
+
+  <br>
+
+  ```javascript
+  markov.clearChain();
+  ```
+
+  This method will reset the **whole Markov Chain**.
+
+  Once the method is run, you will have a Markov Chain that looks new.
+
+  <br>
+
+- `clearState()`
+
   <br>
 
   ```javascript
   markov.clearState();
   ```
 
-  :warning: After using `clearState`, you'll need to add new states. Also, you'll need to call `train`.
+  This method will reset two properties:
 
-<br>
+  ```javascript
+  markov.states = [];
+  markov.start = [];
+  ```
 
-- `Markov.setOrder`
+  This is good if you want to refresh all of your states.
 
-This function is used to set the order of your Markov Chain. The default value is 3.
+  <br>
 
-The lower the order is, the more random your possibilities will be.
+- `clearPossibilities()`
 
-```javascript
-markov.setOrder(); // Set the order to 3.
+  <br>
 
-markov.setOrder(4); // Set the order to 4.
-```
+  ```javascript
+  markov.clearPossibilities();
+  ```
 
----
+  This method will reset the `possibilities` property to an empty object.
 
-## Contributing and bugs
+  <br>
 
-All of the information about how to contribute and report bugs can be found [here](https://github.com/Edwin-Pratt/js-markov/blob/master/CONTRIBUTING.md)
+  This is method called in the `train()` method.
 
----
+### Getting values
+
+- `getStates()`
+
+  <br>
+
+  ```javascript
+  var states = markov.getStates();
+  ```
+
+  Returns an array of all the states in the Markov Chain.
+
+  <br>
+
+- `getPossibilities()`
+
+  <br>
+
+  This function can do two things:
+
+  - If it is not supplied with an argument, It will the whole object:
+
+    ```javascript
+    var possibilities = markov.getPossibilities();
+    ```
+
+  - If there is a valid parameter, then it will return an array of all the possibilities:
+
+  ```javascript
+  var possibilities = markov.getPossibilities('Hey');
+  ```
+
+- `getOrder()`
+
+  <br>
+
+  ```javascript
+  var order = markov.getOrder();
+  ```
+
+  Returns the order of the Markov Chain.
+
+### Miscellaneous methods
+
+- `setOrder()`
+
+  <br>
+
+  ```javascript
+  markov.setOrder(4);
+  ```
+
+  Sets the order of the Markov Chain. If no parameter is passed, `setOrder` will use the value of 3.
+
+  <br>
+
+- `random()`
+
+  <br>
+
+  ```javascript
+  markov.random(obj, type)
+  ```
+
+  This is used in the `generate` method to generate the new text.
+
+  `random()` receives two parameters:
+
+  <br>
+
+  - `obj` - The object or array that gets passed
+
+  - `type` - The type of value been passed to `obj` (`'object'` or `'array'`)
+
+  Returns a random value from an array or a random key from an object.
+
+## Contributing
+
+If you are interested in contributing, please have a look at the [contributing guidelines](https://github.com/Edwin-Pratt/js-markov/blob/master/CONTRIBUTING.md).
 
 ## License
 
-`js-markov` is licensed under the MIT License.
-
-Please have a look at the [LICENSE file](./LICENSE) for more details.
-
----
-
-Copyright :copyright: 2019 Edwin Pratt
+js-markov is licensed under the MIT License. Please have a look at the [LICENSE file](https://github.com/Edwin-Pratt/js-markov/blob/master/LICENSE) for more information.

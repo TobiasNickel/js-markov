@@ -3,22 +3,8 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-// eslint-disable-next-line no-unused-vars
 class Markov {
-  constructor(type = 'text') {
-    // This variable will hold the type of data which the Markov Chain will receive
-    // Currently, the valid types are:
-    //
-    // * text
-    this.type = '';
-
-    if (type === 'text') {
-      this.type = type;
-    } else {
-      console.error(`${this.type} is not a valid type for the Markov Chain.`);
-      console.error('Valid types are:\ntext\nnumeric');
-    }
-
+  constructor() {
     // This is an array that will hold all of our states
     this.states = [];
 
@@ -40,10 +26,24 @@ class Markov {
     }
   }
 
-  clearState() {
+  clearChain() {
     this.states = [];
     this.start = [];
     this.possibilities = {};
+    this.order = 3;
+  }
+
+  clearState() {
+    this.states = [];
+    this.start = [];
+  }
+
+  clearPossibilities() {
+    this.possibilities = {};
+  }
+
+  getStates() {
+    return this.states;
   }
 
   setOrder(order = 3) {
@@ -52,10 +52,34 @@ class Markov {
       order = 3;
     }
 
-    this.order = order;
+    if (order <= 0) {
+      console.error('Markov.setOrder: Order is not a positive number. Defaulting to 3.');
+    }
   }
 
-  train() {
+  getOrder() {
+    return this.order;
+  }
+
+  getPossibilities(possibility) {
+    if (possibility) {
+      if (typeof this.possibilities[possibility] !== 'undefined') {
+        return this.possibilities[possibility];
+      } else {
+        console.error('There is no such possibily called ' + possibility);
+      }
+    } else {
+      return this.possibilities;
+    }
+  }
+
+  train(order) {
+    this.clearPossibilities();
+    
+    if (order) {
+      this.setOrder(order);
+    }
+    
     for (let i = 0; i < this.states.length; i++) {
       this.start.push(this.states[i].substring(0, this.order));
 
