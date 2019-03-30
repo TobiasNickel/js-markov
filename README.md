@@ -1,6 +1,6 @@
 # js-markov
 
-[![Build Status](https://travis-ci.org/Edwin-Pratt/js-markov.svg?branch=master)](https://travis-ci.org/Edwin-Pratt/js-markov)
+[![Build Status](https://travis-ci.org/Edwin-Pratt/js-markov.svg?branch=master)](https://travis-ci.org/Edwin-Pratt/js-markov) [![Minified size](https://img.shields.io/bundlephobia/min/js-markov.svg)](npmjs.com/package/js-markov) [![Minzipped size](https://img.shields.io/bundlephobia/minzip/js-markov.svg)](npmjs.com/package/js-markov) [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 [![NPM](https://nodei.co/npm/js-markov.png?downloads=true&downloadRank=true&stars=true)](https://npmjs.com/js-markov/)
 
