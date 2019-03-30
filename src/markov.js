@@ -55,6 +55,8 @@ class Markov {
     if (order <= 0) {
       console.error('Markov.setOrder: Order is not a positive number. Defaulting to 3.');
     }
+
+    this.order = order;
   }
 
   getOrder() {
@@ -77,9 +79,9 @@ class Markov {
     this.clearPossibilities();
     
     if (order) {
-      this.setOrder(order);
+      this.order = order;
     }
-    
+
     for (let i = 0; i < this.states.length; i++) {
       this.start.push(this.states[i].substring(0, this.order));
 

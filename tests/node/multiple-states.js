@@ -1,4 +1,4 @@
-const Markov = require('../../dist/markov.node.js');
+const Markov = require('../../src/markov.js');
 
 const markov = new Markov();
 
@@ -9,6 +9,12 @@ const words = txt.split('; ');
 
 markov.addState(words);
 
+console.log(markov.getOrder());
+
+markov.setOrder(2);
+
 markov.train();
+
+console.log(markov.getOrder());
 
 console.log(markov.generate(100));
