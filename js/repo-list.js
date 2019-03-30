@@ -375,5 +375,5 @@ var repoList = [
   'cabinet-office',
   'opal-node',
   'radium-grid',
-  'babel-plugin-polished',
+  'babel-plugin-polished'
 ];
