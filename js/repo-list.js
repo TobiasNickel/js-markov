@@ -313,9 +313,8 @@ var repoList = [
   'react-bacon',
   'rrouter',
   'supererror',
-  'nerve', <<
-  <<
-  << < HEAD 'jQuery.threesixty',
+  'nerve',
+  'jQuery.threesixty',
   'jsgit',
   'libuv.js',
   'marionette.state',
@@ -333,7 +332,6 @@ var repoList = [
   'jquery-form-prompt',
   'kimbo.js',
   'keepr',
-  'dotty',
   'fastFrag',
   'couchjs',
   'assetviz',
@@ -377,9 +375,5 @@ var repoList = [
   'cabinet-office',
   'opal-node',
   'radium-grid',
-  'babel-plugin-polished' ===
-  ===
-  = >>>
-  >>>
-  > Split file into a separate file
+  'babel-plugin-polished',
 ];
