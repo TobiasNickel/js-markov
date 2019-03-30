@@ -37,5 +37,3 @@ Here is a basic template:
 <br>
 
 ---
-
-Copyright :copyright: 2019 Edwin Pratt
