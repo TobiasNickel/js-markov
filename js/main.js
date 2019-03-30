@@ -16,7 +16,7 @@ window.onload = function() {
   // eslint-disable-next-line no-undef
   markov.addState(repoList);
 
-  markov.train(2);
+  markov.train();
 
   numStates.textContent = markov.getStates().length;
 
@@ -24,5 +24,15 @@ window.onload = function() {
 };
 
 generateButton.addEventListener('click', function() {
-  output.textContent = markov.generate(30);
+  output.textContent = generateText();
 });
+
+function generateText() {
+  var text = markov.generate(50);
+
+  if (btoa(text) === 'Yml0Y2g=') {
+    return '******';
+  }
+
+  return text;
+}
