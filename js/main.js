@@ -33,5 +33,12 @@ function generateText() {
     return '******';
   }
 
-  return text;
-}
+  return text; <<
+  <<
+  << < HEAD
+} ===
+===
+=
+} >>>
+>>>
+> Added more repo names and filter
