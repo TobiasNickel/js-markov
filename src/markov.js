@@ -26,9 +26,19 @@ class Markov {
     }
   }
 
+  clearChain() {
+    this.states = [];
+    this.start = [];
+    this.possibilities = {};
+    this.order = 3;
+  }
+
   clearState() {
     this.states = [];
     this.start = [];
+  }
+
+  clearPossibilities() {
     this.possibilities = {};
   }
 
@@ -42,7 +52,9 @@ class Markov {
       order = 3;
     }
 
-    this.order = order;
+    if (order <= 0) {
+      console.error('Markov.setOrder: Order is not a positive number. Defaulting to 3.');
+    }
   }
 
   getOrder() {
@@ -61,7 +73,13 @@ class Markov {
     }
   }
 
-  train() {
+  train(order) {
+    this.clearPossibilities();
+    
+    if (order) {
+      this.setOrder(order);
+    }
+    
     for (let i = 0; i < this.states.length; i++) {
       this.start.push(this.states[i].substring(0, this.order));
 
