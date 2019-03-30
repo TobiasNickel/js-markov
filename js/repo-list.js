@@ -313,8 +313,9 @@ var repoList = [
   'react-bacon',
   'rrouter',
   'supererror',
-  'nerve',
-  'jQuery.threesixty',
+  'nerve', <<
+  <<
+  << < HEAD 'jQuery.threesixty',
   'jsgit',
   'libuv.js',
   'marionette.state',
@@ -376,5 +377,9 @@ var repoList = [
   'cabinet-office',
   'opal-node',
   'radium-grid',
-  'babel-plugin-polished'
+  'babel-plugin-polished' ===
+  ===
+  = >>>
+  >>>
+  > Split file into a separate file
 ];
