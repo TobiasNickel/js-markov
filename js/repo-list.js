@@ -5,6 +5,12 @@
 
 // eslint-disable-next-line no-unused-vars
 var repoList = [
+  'asynchronousforeach',
+  'gulp',
+  'p5.js',
+  'node-fetch',
+  'nodemon',
+  'node-sass',
   'backbone-devtools',
   'ui-progress-bar',
   'bootstrap-xtra',
