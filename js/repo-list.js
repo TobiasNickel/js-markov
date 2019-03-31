@@ -5,6 +5,20 @@
 
 // eslint-disable-next-line no-unused-vars
 var repoList = [
+  'writeCapture',
+  'pop',
+  'knockout-file-bindings',
+  'meteor-smart-publish',
+  'FireUser',
+  'watch_tower',
+  'phonegap-workshop',
+  'mrhyde',
+  'mootools-datepicker',
+  'elasticboard',
+  'warden',
+  'keychair',
+  'enterprise-css',
+  'wardleymapstool',
   'asynchronousforeach',
   'gulp',
   'p5.js',
