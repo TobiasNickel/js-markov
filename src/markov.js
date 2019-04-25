@@ -4,7 +4,16 @@
 // https://opensource.org/licenses/MIT
 
 class Markov {
-  constructor() {
+  constructor(type = 'text') {
+    // The type of values
+    if (type === 'text') {
+      this.type = type;
+    } else if (type === 'numeric') {
+      this.type = type;
+    } else {
+      throw new Error('The Markov Chain can only accept the following types: numeric or text');
+    }
+
     // This is an array that will hold all of our states
     this.states = [];
 
@@ -18,7 +27,8 @@ class Markov {
     this.start = [];
   }
 
-  addState(state) {
+  // Add a single state or states
+  addStates(state) {
     if (Array.isArray(state)) {
       this.states = Array.from(state);
     } else {
@@ -26,6 +36,7 @@ class Markov {
     }
   }
 
+  // Clear the Markov Chain completely
   clearChain() {
     this.states = [];
     this.start = [];
@@ -33,19 +44,23 @@ class Markov {
     this.order = 3;
   }
 
+  // Clear the states
   clearState() {
     this.states = [];
     this.start = [];
   }
 
+  // Clear the possibilities
   clearPossibilities() {
     this.possibilities = {};
   }
 
+  // Get the states
   getStates() {
     return this.states;
   }
 
+  // Set the order
   setOrder(order = 3) {
     if (typeof order !== 'number') {
       console.error('Markov.setOrder: Order is not a number. Defaulting to 3.');
@@ -59,13 +74,15 @@ class Markov {
     this.order = order;
   }
 
+  // Get the order
   getOrder() {
     return this.order;
   }
 
+  // Get the whole list of possibilities or a single possibility
   getPossibilities(possibility) {
     if (possibility) {
-      if (typeof this.possibilities[possibility] !== 'undefined') {
+      if (this.possibilities[possibility] !== undefined) {
         return this.possibilities[possibility];
       } else {
         console.error('There is no such possibility called ' + possibility);
@@ -75,6 +92,7 @@ class Markov {
     }
   }
 
+  // Train the markov chain
   train(order) {
     this.clearPossibilities();
 
@@ -97,6 +115,7 @@ class Markov {
     }
   }
 
+  // Generate output
   generate(chars = 15) {
     let startingState = this.random(this.start, 'array');
     let result = startingState;
@@ -121,6 +140,7 @@ class Markov {
     return result;
   }
 
+  // Generate a random value
   random(obj, type) {
     if (Array.isArray(obj) && type === 'array') {
       let index = Math.floor(Math.random() * obj.length);
@@ -137,4 +157,5 @@ class Markov {
   }
 }
 
+// Export the object
 module.exports = Markov;
