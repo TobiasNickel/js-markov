@@ -68,7 +68,7 @@ class Markov {
       if (typeof this.possibilities[possibility] !== 'undefined') {
         return this.possibilities[possibility];
       } else {
-        console.error('There is no such possibily called ' + possibility);
+        console.error('There is no such possibility called ' + possibility);
       }
     } else {
       return this.possibilities;
@@ -77,7 +77,7 @@ class Markov {
 
   train(order) {
     this.clearPossibilities();
-    
+
     if (order) {
       this.order = order;
     }
@@ -113,7 +113,7 @@ class Markov {
       if (!next) {
         break;
       }
-      
+
       result += next;
       current = result.substring(result.length - 3, result.length);
     }
