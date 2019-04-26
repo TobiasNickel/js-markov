@@ -23,8 +23,10 @@ class Markov {
     // This variable holds the order
     this.order = 3;
 
-    // This array will keep track of all the possible ways to start a sentence
-    this.start = [];
+    if (this.type === 'text') {
+      // This array will keep track of all the possible ways to start a sentence
+      this.start = [];
+    }
   }
 
   // Add a single state or states
@@ -39,7 +41,11 @@ class Markov {
   // Clear the Markov Chain completely
   clearChain() {
     this.states = [];
-    this.start = [];
+
+    if (this.type === 'text') {
+      this.start = [];
+    }
+
     this.possibilities = {};
     this.order = 3;
   }
@@ -47,7 +53,10 @@ class Markov {
   // Clear the states
   clearState() {
     this.states = [];
-    this.start = [];
+
+    if (this.type === 'text') {
+      this.start = [];
+    }
   }
 
   // Clear the possibilities
@@ -71,11 +80,19 @@ class Markov {
       console.error('Markov.setOrder: Order is not a positive number. Defaulting to 3.');
     }
 
+    if (this.type === 'numeric') {
+      console.warn('The Markov Chain only accepts numerical data. Therefore, the order does not get used.\nThe order may be used by you to simulate an ID for the Markov Chain if required');
+    }
+
     this.order = order;
   }
 
   // Get the order
   getOrder() {
+    if (this.type === 'numeric') {
+      console.warn('The Markov Chain only accepts numerical data. Therefore, the order does not get used.\nThe order may be used by you to simulate an ID for the Markov Chain if required');
+    }
+
     return this.order;
   }
 
@@ -85,7 +102,7 @@ class Markov {
       if (this.possibilities[possibility] !== undefined) {
         return this.possibilities[possibility];
       } else {
-        console.error('There is no such possibility called ' + possibility);
+        throw new Error('There is no such possibility called ' + possibility);
       }
     } else {
       return this.possibilities;
@@ -100,44 +117,61 @@ class Markov {
       this.order = order;
     }
 
-    for (let i = 0; i < this.states.length; i++) {
-      this.start.push(this.states[i].substring(0, this.order));
+    if (this.type === 'text') {
+      for (let i = 0; i < this.states.length; i++) {
+        this.start.push(this.states[i].substring(0, this.order));
 
-      for (let j = 0; j <= this.states[i].length - this.order; j++) {
-        let gram = this.states[i].substring(j, j + this.order);
+        for (let j = 0; j <= this.states[i].length - this.order; j++) {
+          let gram = this.states[i].substring(j, j + this.order);
 
-        if (!this.possibilities[gram]) {
-          this.possibilities[gram] = [];
+          if (!this.possibilities[gram]) {
+            this.possibilities[gram] = [];
+          }
+
+          this.possibilities[gram].push(this.states[i].charAt(j + this.order));
+        }
+      }
+    } else if (this.type === 'numeric') {
+      for (let i = 0; i < this.states.length; i++) {
+        let {
+          state,
+          predictions
+        } = this.states[i];
+
+        if (!this.possibilities[state]) {
+          this.possibilities[state] = [];
         }
 
-        this.possibilities[gram].push(this.states[i].charAt(j + this.order));
+        this.possibilities[state].push(...predictions);
       }
     }
   }
 
   // Generate output
-  generate(chars = 15) {
-    let startingState = this.random(this.start, 'array');
-    let result = startingState;
-    let current = startingState;
-    let next = '';
+  generateRandom(chars = 15) {
+    if (this.type === 'text') {
+      let startingState = this.random(this.start, 'array');
+      let result = startingState;
+      let current = startingState;
+      let next = '';
 
-    if (typeof startingState === 'undefined') {
-      console.error('Error at Markov.generate(): variable startingState was set to undefined.\n\n\tPlease report this bug at github.com/Edwin-Pratt/js-markov/issues.');
-    }
+      for (let i = 0; i < chars - this.order; i++) {
+        next = this.random(this.possibilities[current], 'array');
 
-    for (let i = 0; i < chars - this.order; i++) {
-      next = this.random(this.possibilities[current], 'array');
+        if (!next) {
+          break;
+        }
 
-      if (!next) {
-        break;
+        result += next;
+        current = result.substring(result.length - 3, result.length);
       }
 
-      result += next;
-      current = result.substring(result.length - 3, result.length);
-    }
+      return result;
+    } else if (this.type === 'numeric') {
+      let possibility = this.random(this.possibilities, 'object');
 
-    return result;
+      return possibility;
+    }
   }
 
   // Generate a random value
@@ -153,6 +187,19 @@ class Markov {
       let index = Math.floor(Math.random() * keys.length);
 
       return keys[index];
+    }
+  }
+
+  // Predict outcome - numeric only (might be a TODO)
+  predict(value) {
+    if (this.type === 'numeric') {
+      if (this.possibilities[value]) {
+        return this.random(this.possibilities[value], 'array');
+      } else {
+        console.error('The markov chain could not find a possibility');
+      }
+    } else {
+      throw new Error('The predict function only works with numerical values - for now')
     }
   }
 }
