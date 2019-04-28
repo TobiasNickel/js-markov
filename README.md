@@ -4,11 +4,11 @@
 
 [![NPM](https://nodei.co/npm/js-markov.png?downloads=true&downloadRank=true&stars=true)](https://npmjs.com/js-markov/)
 
-js-markov is a JavaScript library that allows you to create powerful Markov Chains.
+**js-markov** is a JavaScript library that allows you to create powerful, yet simple Markov Chains.
 
 ## Motivation behind js-markov
 
-js-markov was designed to make using Markov Chains much easier, thus allowing you to create powerful text generation programs.
+js-markov was designed to make using Markov Chains much easier, thus allowing you to create powerful text generation and multi-purpose prediction programs.
 
 ## Live demo
 
@@ -16,14 +16,15 @@ A live demo of js-markov can be seen on [JavaScript repo name generator](https:/
 
 ## Code Example
 
-The following example shows the basic usage js-markov.
+The following example shows the basic usage js-markov:
 
 ```javascript
 // Create a new Markov Chain
+// By default, its type is text
 var markov = new Markov();
 
 // Add some states
-markov.addState([
+markov.addStates([
   'Today is sunny',
   'Today is rainy',
   'The weather is sunny',
@@ -34,14 +35,14 @@ markov.addState([
 markov.train();
 
 // Generate an output
-markov.generate();
+markov.generateRandom();
 ```
 
 ## Installation
 
 There are two ways to get a copy of js-markov:
 
-- For developing your project in the browser, all you need to do is to include the CDN link:
+- For developing your project for a website or web application, all you need to do is to include the following CDN link:
 
   ```html
   <script src="https://unpkg.com/js-markov/dist/markov.js"></script>
@@ -63,57 +64,111 @@ There are two ways to get a copy of js-markov:
 
 Before using js-markov, you'll need to create a new `Markov` object.
 
-```javascript
-var markov = new Markov();
-```
+There is only one thing to consider:
+
+- Is your chain going to handle text or numerical data?
+
+The answer is pretty simple:
+
+- If you are going to generate some text, you'll need to create your Markov chain like:
+
+  ```javascript
+  var markov = new Markov();
+  ```
+
+- If you are going to analyse numbers, or numeric data, then you will need to create your Markov Chain like:
+
+  ```javascript
+  var markov = new Markov('numeric');
+  ```
 
 After that, we can have some fun!
 
-The next part that we need to do is to add states. A state is a form of an object. In js-markov, a state is a word.
+The next part that we need to do is to add states. A state is a form of an object. In js-markov, a state is a either a numeric number or a word.
 
 There are two ways to add states:
 
 - Use an array
 
   ```javascript
-  markov.addState([
+  // If you are generating words
+  markov.addStates([
     'Today is sunny',
     'Today is rainy',
     'The weather is sunny',
     'The weather for tomorrow might be rainy'
+  ]);
+
+  // If you are generating numbers
+  markov.addStates([
+    {
+      state: 1,
+      predictions: [
+        2, 3
+      ]
+    },
+    {
+      state: 2,
+      predictions: [1, 3]
+    },
+    {
+      state: 3,
+      predictions: [2, 1]
+    }
   ]);
   ```
 
 - Add a single state
 
   ```javascript
+  // If you are generating text
   markov.addState('The weather for tomorrow might be sunny');
+
+  // If you are generating numbers
+  markov.addStates({
+    state: 4,
+    predictions: [1, 2, 3]
+  });
   ```
 
 Awesome :sunglasses:
 
-Now we can train our Markov Chain. The method `train` receives an optional "order" parameter. This order defaults to 3.
+Now we can train our Markov Chain. The method `train` receives an optional "order" parameter. This order defaults to 3. 
 
-The order is only used for dividing the states into ngrams.
+Note that the order is not used when your Markov Chain is generating a number.
+
+For Markov Chains that generate text, order is only used for dividing the states into n-grams.
 
 ```javascript
 markov.train();
 
 // Or
+
 markov.train(3);
 ```
 
 It is time :smiley:
 
-Now we are ready to generate some text!
+Now we are ready to generate some data!
 
-All we have to do is to use the `generate` method. This method receives an option parameter which will be used to limit the length of the text. By default, it is set to 15.
+All we have to do is to use the `generateRandom` method. For generating text, this method receives an optional parameter which will be used to limit the length of the text. By default, it is set to 15.
+
+If the Markov Chain is generating numbers, the order will be used as a counter for the amount of numbers to return in an array.
 
 ```javascript
+// For generating text
 var text = markov.generate();
 
-// Or 
+// Or
 var longText = markov.generate(50);
+
+// ----
+
+var numbers = markov.generate(); // Get 15 numbers
+
+// Or
+
+var lotsOfNumbers = markov.generate(100);
 ```
 
 ## Advanced usage
@@ -201,6 +256,8 @@ These are some advanced methods that js-markov offers.
   var possibilities = markov.getPossibilities('Hey');
   ```
 
+  <br>
+
 - `getOrder()`
 
   <br>
@@ -210,6 +267,18 @@ These are some advanced methods that js-markov offers.
   ```
 
   Returns the order of the Markov Chain.
+
+  <br>
+
+- `getType()`
+
+  <br>
+
+  ```javascript
+  var type = markov.getType();
+  ```
+
+  Returns the type of the Markov Chain.
 
 ### Miscellaneous methods
 
@@ -222,6 +291,37 @@ These are some advanced methods that js-markov offers.
   ```
 
   Sets the order of the Markov Chain. If no parameter is passed, `setOrder` will use the value of 3.
+
+  <br>
+
+- `setType()`
+
+  <br>
+
+  ```javascript
+  markov.setType(); // Text
+  markov.setType('text');
+
+  markov.setType('numeric');
+  ```
+
+  Receives an optional value which can either be `"text"` or `"numeric"`. Defaults to `"text"`.
+
+  Sets the type according to value that was passed.
+
+  <br>
+
+- `predict()`
+
+  <br>
+
+  ```javascript
+  var prediction = markov.predict(5);
+  ```
+
+  Note: **This function is only supported for numeric Markov Chains**
+
+  Predicts the data based on an input value.
 
   <br>
 
