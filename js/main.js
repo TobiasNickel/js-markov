@@ -14,7 +14,7 @@ window.onload = function () {
   generateButton.style.visibility = 'hidden';
 
   // eslint-disable-next-line no-undef
-  markov.addState(repoList);
+  markov.addStates(repoList);
   markov.train();
 
   numStates.textContent = markov.getStates().length;
@@ -27,7 +27,7 @@ generateButton.addEventListener('click', function () {
 });
 
 function generateText() {
-  var text = markov.generate(50);
+  var text = markov.generateRandom(50);
 
   if (btoa(text) === 'Yml0Y2g=') {
     return '******';
