@@ -168,7 +168,17 @@ class Markov {
 
       return result;
     } else if (this.type === 'numeric') {
-      let possibility = this.random(this.possibilities, 'object');
+      let possibilities = [];
+
+      for (let i = 0; i < chars; i++) {
+        let starting = this.random(this.possibilities, 'object');
+
+        if (Math.random() < 0.5) {
+          possibilities.push(starting);
+        } else {
+          possibilities.push(this.random(this.possibilities[starting], 'array'));
+        }
+      }
 
       return possibility;
     }
@@ -200,6 +210,19 @@ class Markov {
       }
     } else {
       throw new Error('The predict function only works with numerical values - for now')
+    }
+  }
+
+  getType() {
+    return this.type;
+  }
+
+  setType(type = 'text') {
+    if (type === 'text' || type === 'numeric') {
+      this.clearChain();
+      this.type = type;
+    } else {
+      throw new Error('Invalid type: ' + type);
     }
   }
 }
