@@ -38,6 +38,18 @@ markov.train();
 markov.generateRandom();
 ```
 
+With the above code, the possible output values for the above code are:
+
+```text
+Today is sunny
+Today is rainy
+The weather is sunny
+The weather is rainy
+The weather for tomorrow might be rainy
+```
+
+---
+
 ## Installation
 
 There are two ways to get a copy of js-markov:
@@ -133,7 +145,7 @@ There are two ways to add states:
 
 Awesome :sunglasses:
 
-Now we can train our Markov Chain. The method `train` receives an optional "order" parameter. This order defaults to 3. 
+Now we can train our Markov Chain. The method `train` receives an optional "order" parameter. This order defaults to 3.
 
 Note that the order is not used when your Markov Chain is generating a number.
 
