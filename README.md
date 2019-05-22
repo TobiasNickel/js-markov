@@ -6,9 +6,17 @@
 
 **js-markov** is a JavaScript library that allows you to create powerful, yet simple Markov Chains.
 
-## Motivation behind js-markov
+## Introduction
 
-js-markov was designed to make using Markov Chains much easier, thus allowing you to create powerful text generation and multi-purpose prediction programs.
+- **What are Markov Chains?**
+
+  > A Markov chain is a stochastic model describing a sequence of possible events in which the probability of each event depends only on the state attained in the previous event. - [Wikipedia](https://en.wikipedia.org/wiki/Markov_chain).
+
+- **Why did I create `js-markov`?**
+
+  I wanted to allow people to easily make Markov Chains. By doing so, it would allow people to explore a new path.
+
+---
 
 ## Live demo
 
@@ -28,6 +36,7 @@ markov.addStates([
   'Today is sunny',
   'Today is rainy',
   'The weather is sunny',
+  'The weather for today is sunny',
   'The weather for tomorrow might be rainy'
 ]);
 
@@ -45,6 +54,8 @@ Today is sunny
 Today is rainy
 The weather is sunny
 The weather is rainy
+The weather for today is sunny
+The weather for today is rainy
 The weather for tomorrow might be rainy
 ```
 
