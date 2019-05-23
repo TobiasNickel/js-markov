@@ -145,7 +145,7 @@ There are two ways to add states:
 
   ```javascript
   // If you are generating text
-  markov.addState('The weather for tomorrow might be sunny');
+  markov.addStates('The weather for tomorrow might be sunny');
 
   // If you are generating numbers
   markov.addStates({
