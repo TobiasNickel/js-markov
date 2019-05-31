@@ -375,5 +375,14 @@ var repoList = [
   'cabinet-office',
   'opal-node',
   'radium-grid',
-  'babel-plugin-polished'
+  'babel-plugin-polished',
+  'haste-server',
+  'pastebin',
+  'Stikked',
+  'hardbin',
+  'pastebin-js',
+  'kilink',
+  'pastebin.me',
+  'psitransfer',
+  'paste.sh'
 ];
