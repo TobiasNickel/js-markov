@@ -163,7 +163,7 @@ class Markov {
         }
 
         result += next;
-        current = result.substring(result.length - 3, result.length);
+        current = result.substring(result.length - this.order, result.length);
       }
 
       return result;
